@@ -57,17 +57,17 @@ export default function CustomCursor() {
     >
       {cursor.variant === 'hand' ? (
         <svg
-          width="32"
-          height="42"
-          viewBox="0 0 18 24"
+          width="28"
+          height="38"
+          viewBox="0 0 20 28"
           fill="none"
           style={{
-            transform: 'translate(-4px, -4px) rotate(-12deg)',
-            filter: `drop-shadow(0 0 10px ${cursor.color}66)`,
+            transform: 'translate(-7px, -1px)',
+            filter: `drop-shadow(0 0 8px ${cursor.color}55)`,
           }}
         >
           <path
-            d="M7.9 1C6.9 1 6.1 1.8 6.1 2.8V10.7L4.5 9.3C3.66 8.57 2.39 8.61 1.58 9.42C0.77 10.23 0.78 11.54 1.61 12.33L5.95 16.52C6.35 16.9 6.88 17.12 7.43 17.12H11.52C12.77 17.12 13.79 16.1 13.79 14.85V11.82H14.72C15.71 11.82 16.52 11.01 16.52 10.02C16.52 9.03 15.71 8.22 14.72 8.22H13.79V7.05C13.79 6.14 13.05 5.4 12.14 5.4C11.8 5.4 11.49 5.5 11.22 5.69V4.44C11.22 3.53 10.48 2.79 9.57 2.79C9.17 2.79 8.81 2.93 8.53 3.18V2.8C8.53 1.8 8.02 1 7.9 1Z"
+            d="M8.2 0.5C6.8 0.5 5.8 1.6 5.8 3L5.8 13.2L4.2 12.2C3.2 11.6 1.8 11.8 1.1 12.8C0.4 13.8 0.6 15.2 1.6 15.9L6.2 21.8C6.9 22.8 8.2 23.5 9.5 23.5L13.2 23.5C15.8 23.5 17.8 21.4 17.8 18.8L17.8 14.8C17.8 13.6 16.8 12.6 15.6 12.6C15 12.6 14.5 12.9 14.2 13.3L14.2 11.6C14.2 10.4 13.2 9.4 12 9.4C11.4 9.4 10.9 9.6 10.5 10.1L10.2 3C10.2 1.6 9.2 0.5 8.2 0.5Z"
             fill={cursor.color}
           />
         </svg>
@@ -79,7 +79,7 @@ export default function CustomCursor() {
           fill="none"
           style={{
             transform: 'translate(-2px, -2px)',
-            filter: `drop-shadow(0 0 10px ${cursor.color}66)`,
+            filter: `drop-shadow(0 0 8px ${cursor.color}55)`,
           }}
         >
           <path

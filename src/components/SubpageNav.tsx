@@ -1,55 +1,59 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 interface SubpageNavProps {
-  category: string;
   note?: string;
-  firstProjectTitle?: string;
-  firstProjectAccent?: string;
 }
 
-export default function SubpageNav({ category, note, firstProjectTitle, firstProjectAccent }: SubpageNavProps) {
+const links = [
+  { label: 'Main page', to: '/' },
+  { label: 'AI Automation', to: '/ai-automation' },
+  { label: 'AD Creatives', to: '/ad-creatives' },
+  { label: 'Freelance Designer', to: '/design-events' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/iurii-biriukov-756447208/' },
+] as const;
+
+export default function SubpageNav({ note }: SubpageNavProps) {
+  const { pathname } = useLocation();
+
   return (
-    <header className="px-[clamp(16px,2.66vw,51px)] pt-[clamp(24px,2.8vw,56px)] pb-[clamp(120px,15vw,260px)]">
-      <div className="grid gap-[clamp(40px,6vw,120px)] lg:grid-cols-[minmax(0,0.75fr)_minmax(0,0.95fr)] lg:items-end">
-        <div className="order-2 max-w-[760px] lg:order-1">
-          {note && (
-            <p className="max-w-[760px] text-[clamp(18px,1.6vw,28px)] leading-[1.08] text-brand-black">
-              {note}
-            </p>
-          )}
-        </div>
-
-        <div className="order-1 min-w-0 lg:order-2 lg:justify-self-end">
-          <Link
-            to="/"
-            className="inline-block text-[clamp(18px,1.75vw,30px)] font-black uppercase tracking-[-0.04em] text-brand-gray transition-colors duration-200 hover:text-brand-black"
-          >
-            back
-          </Link>
-
-          <div className="mt-[clamp(18px,2vw,32px)]">
-            <p className="text-[clamp(11px,0.9vw,15px)] uppercase tracking-[0.18em] text-brand-gray">
-              Selected work
-            </p>
-
-            <h1
-              className="mt-[clamp(12px,1.4vw,20px)] max-w-[8ch] font-black uppercase leading-[0.82] tracking-[-0.055em]"
-              style={{ color: '#F74429', fontSize: 'clamp(54px,8.3vw,154px)' }}
+    <header className="relative z-10">
+      <nav className="flex flex-wrap items-baseline gap-x-[clamp(14px,3.6vw,68px)] gap-y-[clamp(6px,0.6vw,12px)] px-[clamp(12px,1.88vw,36px)] pt-[clamp(14px,1.6vw,30px)] pb-[clamp(10px,1.2vw,22px)] font-black uppercase text-[clamp(10px,1.51vw,29px)] tracking-wide overflow-hidden">
+        {links.map((link) => {
+          if ('href' in link) {
+            return (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 text-brand-black transition-opacity hover:opacity-60"
+              >
+                {link.label}
+              </a>
+            );
+          }
+          const active = link.to === pathname;
+          return (
+            <Link
+              key={link.to}
+              to={link.to}
+              className={`shrink-0 transition-opacity hover:opacity-60 ${
+                active ? 'text-brand-black' : 'text-brand-gray'
+              }`}
             >
-              {category}
-            </h1>
+              {link.label}
+            </Link>
+          );
+        })}
+      </nav>
 
-            {firstProjectTitle != null && (
-              <p className="mt-[clamp(28px,3vw,52px)] text-[clamp(24px,2.5vw,44px)] font-black uppercase leading-[0.92] tracking-[-0.05em]">
-                <span className="text-brand-black">{firstProjectTitle}</span>
-                {firstProjectAccent && (
-                  <span style={{ color: '#F74429' }}> {firstProjectAccent}</span>
-                )}
-              </p>
-            )}
-          </div>
+      {note && (
+        <div className="px-[clamp(12px,1.88vw,36px)] pt-[clamp(60px,10vw,180px)] pb-[clamp(80px,12vw,220px)]">
+          <p className="max-w-[680px] text-[clamp(20px,2vw,36px)] leading-[1.14] text-brand-black">
+            {note}
+          </p>
         </div>
-      </div>
+      )}
     </header>
   );
 }

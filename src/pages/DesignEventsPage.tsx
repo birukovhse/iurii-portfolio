@@ -1,6 +1,7 @@
 import SubpageNav from '../components/SubpageNav';
 import ProjectSection from '../components/ProjectSection';
 import Footer from '../components/Footer';
+import BackgroundShapes from '../components/BackgroundShapes';
 
 const posterImages = [
   '/media/design-events/image-06969169-5ece-4237-bff5-8e4b5fc88301.webp',
@@ -28,24 +29,19 @@ function PosterImage({ src, alt }: { src: string; alt: string }) {
       className="break-inside-avoid overflow-hidden rounded-[4px]"
       style={{ marginBottom: posterGap }}
     >
-      <img
-        src={src}
-        alt={alt}
-        className="h-auto w-full object-cover"
-      />
+      <img src={src} alt={alt} className="h-auto w-full object-cover" />
     </div>
   );
 }
 
 export default function DesignEventsPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-brand-bg font-inter">
-      <SubpageNav
-        category="Design and Events"
-        note="Personal work, event instincts, and visual experiments that sit somewhere between design practice and making things happen in the real world."
-      />
+    <div className="min-h-screen flex flex-col bg-brand-bg font-inter relative">
+      <BackgroundShapes />
 
-      <main className="flex-1">
+      <SubpageNav note="Personal work, event instincts, and visual experiments that sit somewhere between design practice and making things happen in the real world." />
+
+      <main className="relative z-10 flex-1">
         <ProjectSection
           title="Odds"
           titleAccent="& Ends"
@@ -54,17 +50,22 @@ export default function DesignEventsPage() {
           media={
             <div className="columns-2 md:columns-3" style={{ columnGap: posterGap }}>
               {posterImages.map((src, i) => (
-                <PosterImage key={src} src={src} alt={`Design and events poster ${i + 1}`} />
+                <PosterImage
+                  key={src}
+                  src={src}
+                  alt={`Design and events poster ${i + 1}`}
+                />
               ))}
             </div>
           }
         />
 
-        <section className="border-t border-brand-black/15 px-[clamp(24px,3.5vw,68px)] py-[clamp(140px,15vw,260px)]">
-          <p className="max-w-[1080px] text-[clamp(34px,4vw,76px)] font-black uppercase leading-[0.9] tracking-[-0.045em] text-brand-black">
-            A side of the portfolio where design instincts, production sense, and rough visual energy meet in one place.
+        <div className="px-[clamp(16px,2.5vw,48px)] pb-[clamp(160px,18vw,320px)]">
+          <p className="max-w-[960px] text-[clamp(30px,3.6vw,68px)] font-black uppercase leading-[0.88] tracking-[-0.04em] text-brand-black">
+            A side of the portfolio where design instincts, production sense,
+            and rough visual energy meet in one place.
           </p>
-        </section>
+        </div>
       </main>
 
       <Footer />

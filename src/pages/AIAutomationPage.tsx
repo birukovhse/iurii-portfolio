@@ -1,6 +1,7 @@
 import SubpageNav from '../components/SubpageNav';
 import ProjectSection from '../components/ProjectSection';
 import Footer from '../components/Footer';
+import BackgroundShapes from '../components/BackgroundShapes';
 
 const projectMedia = [
   '/media/ai-automation/conjuring.jpg',
@@ -48,24 +49,19 @@ const projects = [
 function ProjectImage({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="overflow-hidden rounded-[4px]">
-      <img
-        src={src}
-        alt={alt}
-        className="h-auto w-full"
-      />
+      <img src={src} alt={alt} className="h-auto w-full" />
     </div>
   );
 }
 
 export default function AIAutomationPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-brand-bg font-inter">
-      <SubpageNav
-        category="AI Automation"
-        note="Systems, tools, and workflows built to compress the path from a raw idea to a usable creative output."
-      />
+    <div className="min-h-screen flex flex-col bg-brand-bg font-inter relative">
+      <BackgroundShapes />
 
-      <main className="flex-1">
+      <SubpageNav note="Systems, tools, and workflows built to compress the path from a raw idea to a usable creative output." />
+
+      <main className="relative z-10 flex-1">
         {projects.map((project, i) => (
           <ProjectSection
             key={i}
@@ -74,14 +70,21 @@ export default function AIAutomationPage() {
             description={project.description}
             blocks={project.blocks}
             invert={i % 2 === 1}
-            media={<ProjectImage src={projectMedia[i]} alt={`${project.title} ${project.titleAccent ?? ''}`.trim()} />}
+            media={
+              <ProjectImage
+                src={projectMedia[i]}
+                alt={`${project.title} ${project.titleAccent ?? ''}`.trim()}
+              />
+            }
           />
         ))}
-        <section className="border-t border-brand-black/15 px-[clamp(24px,3.5vw,68px)] py-[clamp(140px,15vw,260px)]">
-          <p className="max-w-[1080px] text-[clamp(34px,4vw,76px)] font-black uppercase leading-[0.9] tracking-[-0.045em] text-brand-black">
-            And a dozen other small tools that turned repetitive production work into reusable internal systems.
+
+        <div className="px-[clamp(16px,2.5vw,48px)] pb-[clamp(160px,18vw,320px)]">
+          <p className="max-w-[960px] text-[clamp(30px,3.6vw,68px)] font-black uppercase leading-[0.88] tracking-[-0.04em] text-brand-black">
+            And a dozen other small tools that turned repetitive production work
+            into reusable internal systems.
           </p>
-        </section>
+        </div>
       </main>
 
       <Footer />
