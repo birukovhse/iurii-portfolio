@@ -59,6 +59,12 @@ export default function DesignEventsPage() {
             </div>
           }
         />
+
+        <section className="border-t border-brand-black/15 px-[clamp(24px,3.5vw,68px)] py-[clamp(140px,15vw,260px)]">
+          <p className="max-w-[1080px] text-[clamp(34px,4vw,76px)] font-black uppercase leading-[0.9] tracking-[-0.045em] text-brand-black">
+            A side of the portfolio where design instincts, production sense, and rough visual energy meet in one place.
+          </p>
+        </section>
       </main>
 
       <Footer />

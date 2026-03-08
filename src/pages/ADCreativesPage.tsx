@@ -59,6 +59,7 @@ export default function ADCreativesPage() {
           title="Freelance"
           description="Outside my day job, I still take on selected projects to stay sharp. This film, created in winter 2024–2025, was produced entirely by me, including the script."
           blocks={[]}
+          invert
           media={<HorizontalVideo src="/media/ad-creatives/Freelance.mp4" title="Freelance film" />}
         />
 
@@ -73,6 +74,12 @@ export default function ADCreativesPage() {
             </div>
           }
         />
+
+        <section className="border-t border-brand-black/15 px-[clamp(24px,3.5vw,68px)] py-[clamp(140px,15vw,260px)]">
+          <p className="max-w-[1080px] text-[clamp(34px,4vw,76px)] font-black uppercase leading-[0.9] tracking-[-0.045em] text-brand-black">
+            Built across manual craft, creative direction, and AI-assisted production without losing the taste of the work itself.
+          </p>
+        </section>
       </main>
 
       <Footer />

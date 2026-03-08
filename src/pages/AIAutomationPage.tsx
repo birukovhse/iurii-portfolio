@@ -73,11 +73,12 @@ export default function AIAutomationPage() {
             titleAccent={project.titleAccent}
             description={project.description}
             blocks={project.blocks}
+            invert={i % 2 === 1}
             media={<ProjectImage src={projectMedia[i]} alt={`${project.title} ${project.titleAccent ?? ''}`.trim()} />}
           />
         ))}
-        <section className="border-t border-brand-black/15 px-[clamp(16px,2.66vw,51px)] py-[clamp(28px,3vw,56px)]">
-          <p className="max-w-[880px] text-[clamp(24px,2.4vw,42px)] font-black uppercase leading-[1.05] text-brand-black">
+        <section className="border-t border-brand-black/15 px-[clamp(24px,3.5vw,68px)] py-[clamp(140px,15vw,260px)]">
+          <p className="max-w-[1080px] text-[clamp(34px,4vw,76px)] font-black uppercase leading-[0.9] tracking-[-0.045em] text-brand-black">
             And a dozen other small tools that turned repetitive production work into reusable internal systems.
           </p>
         </section>
