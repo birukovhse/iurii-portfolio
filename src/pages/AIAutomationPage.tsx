@@ -79,7 +79,7 @@ export default function AIAutomationPage() {
           />
         ))}
 
-        <div className="px-[clamp(16px,2.5vw,48px)] pb-[clamp(160px,18vw,320px)]">
+        <div className="px-[clamp(16px,2.5vw,48px)] pb-[clamp(300px,32vw,600px)]">
           <p className="max-w-[960px] text-[clamp(30px,3.6vw,68px)] font-black uppercase leading-[0.88] tracking-[-0.04em] text-brand-black">
             And a dozen other small tools that turned repetitive production work
             into reusable internal systems.

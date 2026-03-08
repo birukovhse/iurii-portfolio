@@ -48,7 +48,7 @@ export default function SubpageNav({ note }: SubpageNavProps) {
       </nav>
 
       {note && (
-        <div className="px-[clamp(12px,1.88vw,36px)] pt-[clamp(60px,10vw,180px)] pb-[clamp(80px,12vw,220px)]">
+        <div className="px-[clamp(12px,1.88vw,36px)] pt-[clamp(120px,18vw,340px)] pb-[clamp(160px,22vw,420px)]">
           <p className="max-w-[680px] text-[clamp(20px,2vw,36px)] leading-[1.14] text-brand-black">
             {note}
           </p>
