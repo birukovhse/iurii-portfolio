@@ -25,7 +25,7 @@ export default function ProjectSection({
   invert = false,
 }: ProjectSectionProps) {
   return (
-    <section className="relative z-10 px-[clamp(16px,2.5vw,48px)] pb-[clamp(400px,42vw,800px)] first:pt-0 pt-[clamp(60px,6vw,120px)]">
+    <section className="relative z-10 px-[clamp(16px,2.5vw,48px)] pb-[50vh] first:pt-0 pt-[clamp(80px,8vw,160px)]">
       <div
         className={`grid gap-y-[clamp(80px,10vw,180px)] gap-x-[clamp(80px,8vw,160px)] lg:items-start ${
           invert
@@ -50,7 +50,7 @@ export default function ProjectSection({
           {description && (
             <p
               className={`max-w-[640px] text-[clamp(17px,1.45vw,26px)] leading-[1.18] text-brand-black ${
-                hideTitle ? '' : 'mt-[clamp(36px,4vw,72px)]'
+                hideTitle ? '' : 'mt-[clamp(48px,5vw,96px)]'
               }`}
             >
               {description}
