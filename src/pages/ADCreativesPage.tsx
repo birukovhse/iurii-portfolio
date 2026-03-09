@@ -44,24 +44,24 @@ export default function ADCreativesPage() {
 
       <main className="relative z-10 flex-1">
         <ProjectSection
+          title="Freelance"
+          description="Outside my day job, I still take on selected projects to stay sharp. This film, created in winter 2024–2025, was produced entirely by me, including the script."
+          blocks={[]}
+          media={
+            <HorizontalVideo src="/media/ad-creatives/Freelance.mp4" title="Freelance film" />
+          }
+        />
+
+        <ProjectSection
           title="SDG"
           description="At the beginning of my time at the company, I was focused on making videos by hand. Later I moved into curating production and setting up more complex video pipelines."
           blocks={[]}
+          invert
           media={
             <div className="grid grid-cols-1 gap-[clamp(16px,1.6vw,28px)] sm:grid-cols-2">
               <VerticalVideo src="/media/ad-creatives/SDG1.mp4" title="SDG video 1" />
               <VerticalVideo src="/media/ad-creatives/SDG2.mp4" title="SDG video 2" />
             </div>
-          }
-        />
-
-        <ProjectSection
-          title="Freelance"
-          description="Outside my day job, I still take on selected projects to stay sharp. This film, created in winter 2024–2025, was produced entirely by me, including the script."
-          blocks={[]}
-          invert
-          media={
-            <HorizontalVideo src="/media/ad-creatives/Freelance.mp4" title="Freelance film" />
           }
         />
 
@@ -77,7 +77,7 @@ export default function ADCreativesPage() {
           }
         />
 
-        <div className="px-[clamp(16px,2.5vw,48px)] pb-[clamp(300px,32vw,600px)]">
+        <div className="min-h-screen flex items-center" style={{ padding: '0 24px' }}>
           <p className="max-w-[960px] text-[clamp(30px,3.6vw,68px)] font-black uppercase leading-[0.88] tracking-[-0.04em] text-brand-black">
             Built across manual craft, creative direction, and AI-assisted
             production without losing the taste of the work itself.

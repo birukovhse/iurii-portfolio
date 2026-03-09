@@ -4,51 +4,51 @@ interface SubpageNavProps {
   note?: string;
 }
 
-const links = [
+const navLinks = [
   { label: 'Main page', to: '/' },
   { label: 'AI Automation', to: '/ai-automation' },
   { label: 'AD Creatives', to: '/ad-creatives' },
   { label: 'Freelance Designer', to: '/design-events' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/iurii-biriukov-756447208/' },
 ] as const;
+
+const LINKEDIN_URL = 'https://www.linkedin.com/in/iurii-biriukov-756447208/';
 
 export default function SubpageNav({ note }: SubpageNavProps) {
   const { pathname } = useLocation();
 
   return (
-    <header className="relative z-10">
-      <nav className="flex flex-wrap items-baseline gap-x-[clamp(14px,3.6vw,68px)] gap-y-[clamp(6px,0.6vw,12px)] px-[clamp(12px,1.88vw,36px)] pt-[clamp(14px,1.6vw,30px)] pb-[clamp(10px,1.2vw,22px)] font-black uppercase text-[clamp(10px,1.51vw,29px)] tracking-wide overflow-hidden">
-        {links.map((link) => {
-          if ('href' in link) {
+    <header className="relative z-10" style={{ paddingBottom: note ? 200 : 0 }}>
+      <nav className="flex items-baseline justify-between font-black uppercase text-[clamp(10px,1.51vw,29px)] tracking-wide" style={{ padding: '16px 24px 12px' }}>
+        <div className="flex flex-wrap items-baseline gap-x-[clamp(14px,3.6vw,68px)] gap-y-[clamp(6px,0.6vw,12px)] min-w-0">
+          {navLinks.map((link) => {
+            const active = link.to === pathname;
             return (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="shrink-0 text-brand-black transition-opacity hover:opacity-60"
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`shrink-0 transition-opacity hover:opacity-60 ${
+                  active ? 'text-brand-black' : 'text-brand-gray'
+                }`}
               >
                 {link.label}
-              </a>
+              </Link>
             );
-          }
-          const active = link.to === pathname;
-          return (
-            <Link
-              key={link.to}
-              to={link.to}
-              className={`shrink-0 transition-opacity hover:opacity-60 ${
-                active ? 'text-brand-black' : 'text-brand-gray'
-              }`}
-            >
-              {link.label}
-            </Link>
-          );
-        })}
+          })}
+        </div>
+
+        <a
+          href={LINKEDIN_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="shrink-0 text-brand-black transition-opacity hover:opacity-60"
+          style={{ marginLeft: 'clamp(12px, 2vw, 40px)' }}
+        >
+          LinkedIn
+        </a>
       </nav>
 
       {note && (
-        <div className="px-[clamp(12px,1.88vw,36px)] pt-[25vh] pb-[30vh]">
+        <div style={{ padding: '60px 24px 0' }}>
           <p className="max-w-[680px] text-[clamp(20px,2vw,36px)] leading-[1.14] text-brand-black">
             {note}
           </p>

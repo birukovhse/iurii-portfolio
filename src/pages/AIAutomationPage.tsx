@@ -41,7 +41,7 @@ export default function AIAutomationPage() {
       <BackgroundShapes />
 
       <SubpageNav
-        note={'\u201CMultitool\u201D is an internal platform built for Social Discovery Group. It brings different AI models into shared workflows that simplify day-to-day work for design, ASO, and SMM teams, with more than ten tools across text, image, and video.'}
+        note={'«Multitool» is an internal platform built for Social Discovery Group. It brings different AI models into shared workflows that simplify day-to-day work for design, ASO, and SMM teams, with more than ten tools across text, image, and video. Conjuring, Text Tool, and TrendWatcher shown below are some of its core modules.'}
       />
 
       <main className="relative z-10 flex-1">
@@ -61,7 +61,7 @@ export default function AIAutomationPage() {
           />
         ))}
 
-        <div className="px-[clamp(16px,2.5vw,48px)] pb-[clamp(300px,32vw,600px)]">
+        <div className="min-h-screen flex items-center" style={{ padding: '0 24px' }}>
           <p className="max-w-[960px] text-[clamp(30px,3.6vw,68px)] font-black uppercase leading-[0.88] tracking-[-0.04em] text-brand-black">
             And a dozen other small tools that turned repetitive production work
             into reusable internal systems.

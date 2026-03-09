@@ -25,43 +25,39 @@ export default function ProjectSection({
   invert = false,
 }: ProjectSectionProps) {
   return (
-    <section className="relative z-10 px-[clamp(16px,2.5vw,48px)] pb-[50vh] first:pt-0 pt-[clamp(80px,8vw,160px)]">
+    <section className="relative z-10" style={{ padding: '0 24px 200px' }}>
+      {!hideTitle && (
+        <h2 className="font-black uppercase leading-[0.84] tracking-[-0.05em] text-[clamp(52px,7.5vw,140px)] text-brand-black">
+          {title}
+          {titleAccent && (
+            <>
+              <br />
+              <span>{titleAccent}</span>
+            </>
+          )}
+        </h2>
+      )}
+
       <div
-        className={`grid gap-y-[clamp(80px,10vw,180px)] gap-x-[clamp(80px,8vw,160px)] lg:items-start ${
+        className={`w-full grid gap-x-[clamp(48px,5vw,100px)] lg:items-start ${
           invert
             ? 'lg:grid-cols-[minmax(340px,1.1fr)_minmax(260px,0.72fr)]'
             : 'lg:grid-cols-[minmax(260px,0.72fr)_minmax(340px,1.1fr)]'
         }`}
+        style={{ marginTop: 80, rowGap: 80 }}
       >
-        {/* Text column */}
         <div className={`min-w-0 ${invert ? 'lg:order-2' : ''}`}>
-          {!hideTitle && (
-            <h2 className="font-black uppercase leading-[0.84] tracking-[-0.05em] text-[clamp(52px,7.5vw,140px)] text-brand-black">
-              {title}
-              {titleAccent && (
-                <>
-                  <br />
-                  <span>{titleAccent}</span>
-                </>
-              )}
-            </h2>
-          )}
-
           {description && (
-            <p
-              className={`max-w-[640px] text-[clamp(17px,1.45vw,26px)] leading-[1.18] text-brand-black ${
-                hideTitle ? '' : 'mt-[clamp(48px,5vw,96px)]'
-              }`}
-            >
+            <p className="max-w-[640px] text-[clamp(17px,1.45vw,26px)] leading-[1.18] text-brand-black">
               {description}
             </p>
           )}
 
           {blocks.length > 0 && (
-            <div className={`${description ? 'mt-[clamp(48px,5.5vw,100px)]' : hideTitle ? '' : 'mt-[clamp(36px,4vw,72px)]'} space-y-[clamp(40px,4.5vw,80px)]`}>
+            <div style={{ marginTop: description ? 60 : 0 }} className="space-y-[48px]">
               {blocks.map((block) => (
                 <div key={block.label}>
-                  <h3 className="mb-[clamp(12px,1.2vw,20px)] text-[clamp(11px,0.9vw,16px)] font-black uppercase tracking-[0.14em] text-brand-gray">
+                  <h3 className="mb-[clamp(10px,1vw,18px)] text-[clamp(11px,0.9vw,16px)] font-black uppercase tracking-[0.14em] text-brand-gray">
                     {block.label}
                   </h3>
                   <p className="max-w-[640px] text-[clamp(17px,1.45vw,26px)] leading-[1.18] text-brand-black">
@@ -73,13 +69,12 @@ export default function ProjectSection({
           )}
 
           {note && (
-            <p className="mt-[clamp(36px,4vw,72px)] max-w-[640px] text-[clamp(17px,1.45vw,26px)] font-black uppercase leading-[1.06] text-brand-black">
+            <p style={{ marginTop: 48 }} className="max-w-[640px] text-[clamp(17px,1.45vw,26px)] font-black uppercase leading-[1.06] text-brand-black">
               {note}
             </p>
           )}
         </div>
 
-        {/* Media column */}
         <div className={`relative min-w-0 ${invert ? 'lg:order-1' : ''}`}>
           {media}
         </div>
