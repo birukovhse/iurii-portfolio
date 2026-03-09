@@ -25,9 +25,9 @@ export default function ProjectSection({
   invert = false,
 }: ProjectSectionProps) {
   return (
-    <section className="relative z-10 px-6 pt-20 pb-24 md:pt-0 md:pb-[200px] first:pt-0">
+    <section className="relative z-10" style={{ padding: '0 24px 200px' }}>
       {!hideTitle && (
-        <h2 className="font-black uppercase leading-[0.84] tracking-[-0.05em] text-[clamp(32px,8vw,140px)] md:text-[clamp(52px,7.5vw,140px)] text-brand-black">
+        <h2 className="font-black uppercase leading-[0.84] tracking-[-0.05em] text-[clamp(52px,7.5vw,140px)] text-brand-black">
           {title}
           {titleAccent && (
             <>
@@ -39,11 +39,12 @@ export default function ProjectSection({
       )}
 
       <div
-        className={`w-full grid gap-x-[clamp(48px,5vw,100px)] gap-y-10 md:gap-y-20 lg:items-start mt-10 md:mt-20 ${
+        className={`w-full grid gap-x-[clamp(48px,5vw,100px)] lg:items-start ${
           invert
             ? 'lg:grid-cols-[minmax(340px,1.1fr)_minmax(260px,0.72fr)]'
             : 'lg:grid-cols-[minmax(260px,0.72fr)_minmax(340px,1.1fr)]'
         }`}
+        style={{ marginTop: 80, rowGap: 80 }}
       >
         <div className={`min-w-0 ${invert ? 'lg:order-2' : ''}`}>
           {description && (

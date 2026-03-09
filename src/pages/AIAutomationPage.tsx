@@ -9,13 +9,7 @@ const projectMedia = [
   '/media/ai-automation/n8n.png',
 ] as const;
 
-interface Project {
-  title: string;
-  titleAccent?: string;
-  description: string;
-}
-
-const projects: Project[] = [
+const projects = [
   {
     title: 'Conjuring',
     description:
@@ -27,8 +21,7 @@ const projects: Project[] = [
       'This tool helps teams produce SEO-driven promotional articles for different brands, briefs, brand books, and editorial guidelines. It removes the repetitive drafting stage so professional copywriters can focus on ideas, structure, and editing instead of spending their energy on first-pass writing.',
   },
   {
-    title: 'Trend',
-    titleAccent: 'Watcher',
+    title: 'TrendWatcher',
     description:
       'I helped shape a large internal system that automatically scans social-media trends, turns them into video concepts and scripts, and then generates new creative directions from prompts supplied by SMM managers.',
   },
@@ -56,7 +49,6 @@ export default function AIAutomationPage() {
           <ProjectSection
             key={i}
             title={project.title}
-            titleAccent={project.titleAccent}
             description={project.description}
             blocks={[]}
             invert={i % 2 === 1}
@@ -69,7 +61,7 @@ export default function AIAutomationPage() {
           />
         ))}
 
-        <div className="min-h-screen flex items-center px-4 md:px-6">
+        <div className="min-h-screen flex items-center" style={{ padding: '0 24px' }}>
           <p className="max-w-[960px] text-[clamp(30px,3.6vw,68px)] font-black uppercase leading-[0.88] tracking-[-0.04em] text-brand-black">
             And a dozen other small tools that turned repetitive production work
             into reusable internal systems.
