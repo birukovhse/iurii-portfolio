@@ -37,7 +37,14 @@ export default function HomePage() {
         <StaticHeroShapes />
 
         <div className="relative z-10 pointer-events-none h-full flex flex-col justify-between px-4 pt-4 md:px-6 md:pt-4">
-          <h1 className="font-black text-[clamp(28px,6.67vw,128px)] uppercase leading-[1] tracking-[-0.02em] text-brand-black grid grid-cols-[auto_auto_1fr] items-baseline gap-x-[clamp(8px,2.5vw,40px)] w-full">
+          {/* Mobile-only h1: HELLO I'M left, IURII BIRIUKOV right */}
+          <h1 className="font-black uppercase leading-[0.95] tracking-[-0.02em] text-brand-black w-full block md:hidden">
+            <span className="text-[42px] block">Hello I&apos;m</span>
+            <span className="text-[42px] block text-right">Iurii Biriukov</span>
+          </h1>
+
+          {/* Desktop h1: original grid layout */}
+          <h1 className="font-black text-[clamp(28px,6.67vw,128px)] uppercase leading-[1] tracking-[-0.02em] text-brand-black grid grid-cols-[auto_auto_1fr] items-baseline gap-x-[clamp(8px,2.5vw,40px)] w-full hidden md:grid">
             <span>Hello</span>
             <span>I&apos;m</span>
             <span className="justify-self-end text-right">Iurii Biriukov</span>
@@ -47,7 +54,7 @@ export default function HomePage() {
             <Link
               key={to}
               to={to}
-              className="inline-flex w-fit flex-col font-black text-[28px] md:text-[clamp(20px,5vw,96px)] uppercase leading-[0.9] tracking-[-0.03em] text-brand-gray transition-colors duration-300 pointer-events-auto"
+              className="inline-flex w-fit flex-col font-black uppercase leading-[0.88] tracking-[-0.03em] text-brand-gray transition-colors duration-300 pointer-events-auto text-[42px] md:text-[clamp(20px,5vw,96px)]"
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = hoverColor;
                 setAnimMode(hoverMode);
