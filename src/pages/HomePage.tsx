@@ -34,9 +34,7 @@ export default function HomePage() {
         <div className="absolute right-0 top-0 hidden w-[42%] h-full md:block">
           <GenerativeAnimation hoverMode={animMode} />
         </div>
-        <div className="absolute right-0 top-0 block h-full w-[55%] md:hidden">
-          <StaticHeroShapes />
-        </div>
+        <StaticHeroShapes />
 
         <div className="relative z-10 pointer-events-none h-full flex flex-col justify-between px-4 pt-4 md:px-6 md:pt-4">
           <h1 className="font-black text-[clamp(28px,6.67vw,128px)] uppercase leading-[1] tracking-[-0.02em] text-brand-black grid grid-cols-[auto_auto_1fr] items-baseline gap-x-[clamp(8px,2.5vw,40px)] w-full">
@@ -49,7 +47,7 @@ export default function HomePage() {
             <Link
               key={to}
               to={to}
-              className="inline-flex w-fit flex-col font-black text-[clamp(20px,5vw,96px)] uppercase leading-[0.82] tracking-[-0.03em] text-brand-gray transition-colors duration-300 pointer-events-auto"
+              className="inline-flex w-fit flex-col font-black text-[28px] md:text-[clamp(20px,5vw,96px)] uppercase leading-[0.9] tracking-[-0.03em] text-brand-gray transition-colors duration-300 pointer-events-auto"
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = hoverColor;
                 setAnimMode(hoverMode);

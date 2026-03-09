@@ -9,7 +9,13 @@ const projectMedia = [
   '/media/ai-automation/n8n.png',
 ] as const;
 
-const projects = [
+interface Project {
+  title: string;
+  titleAccent?: string;
+  description: string;
+}
+
+const projects: Project[] = [
   {
     title: 'Conjuring',
     description:
@@ -21,7 +27,8 @@ const projects = [
       'This tool helps teams produce SEO-driven promotional articles for different brands, briefs, brand books, and editorial guidelines. It removes the repetitive drafting stage so professional copywriters can focus on ideas, structure, and editing instead of spending their energy on first-pass writing.',
   },
   {
-    title: 'TrendWatcher',
+    title: 'Trend',
+    titleAccent: 'Watcher',
     description:
       'I helped shape a large internal system that automatically scans social-media trends, turns them into video concepts and scripts, and then generates new creative directions from prompts supplied by SMM managers.',
   },
@@ -49,6 +56,7 @@ export default function AIAutomationPage() {
           <ProjectSection
             key={i}
             title={project.title}
+            titleAccent={project.titleAccent}
             description={project.description}
             blocks={[]}
             invert={i % 2 === 1}
