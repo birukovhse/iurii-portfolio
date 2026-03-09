@@ -77,7 +77,7 @@ export default function ADCreativesPage() {
           }
         />
 
-        <div className="min-h-screen flex items-center" style={{ padding: '0 24px' }}>
+        <div className="min-h-screen flex items-center px-4 md:px-6">
           <p className="max-w-[960px] text-[clamp(30px,3.6vw,68px)] font-black uppercase leading-[0.88] tracking-[-0.04em] text-brand-black">
             Built across manual craft, creative direction, and AI-assisted
             production without losing the taste of the work itself.

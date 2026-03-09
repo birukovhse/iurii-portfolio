@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import GenerativeAnimation, { type HoverMode } from '../components/GenerativeAnimation';
+import StaticHeroShapes from '../components/StaticHeroShapes';
 
 const roles = [
   {
@@ -30,15 +31,15 @@ export default function HomePage() {
   return (
     <div className="h-screen flex flex-col bg-brand-bg font-inter relative overflow-hidden">
       <main className="flex-1 relative">
-        <div className="absolute right-0 top-0 w-[42%] h-full">
+        <div className="absolute right-0 top-0 hidden w-[42%] h-full md:block">
           <GenerativeAnimation hoverMode={animMode} />
         </div>
+        <div className="absolute right-0 top-0 block h-full w-[55%] md:hidden">
+          <StaticHeroShapes />
+        </div>
 
-        <div
-          className="relative z-10 pointer-events-none h-full flex flex-col justify-between"
-          style={{ padding: '16px 24px 0 24px' }}
-        >
-          <h1 className="font-black text-[clamp(32px,6.67vw,128px)] uppercase leading-[1] tracking-[-0.02em] text-brand-black grid grid-cols-[auto_auto_1fr] items-baseline gap-x-[clamp(10px,2.5vw,40px)] w-full">
+        <div className="relative z-10 pointer-events-none h-full flex flex-col justify-between px-4 pt-4 md:px-6 md:pt-4">
+          <h1 className="font-black text-[clamp(28px,6.67vw,128px)] uppercase leading-[1] tracking-[-0.02em] text-brand-black grid grid-cols-[auto_auto_1fr] items-baseline gap-x-[clamp(8px,2.5vw,40px)] w-full">
             <span>Hello</span>
             <span>I&apos;m</span>
             <span className="justify-self-end text-right">Iurii Biriukov</span>

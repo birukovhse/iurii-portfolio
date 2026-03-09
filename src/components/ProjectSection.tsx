@@ -25,7 +25,7 @@ export default function ProjectSection({
   invert = false,
 }: ProjectSectionProps) {
   return (
-    <section className="relative z-10" style={{ padding: '0 24px 200px' }}>
+    <section className="relative z-10 px-6 pb-24 md:pb-[200px]">
       {!hideTitle && (
         <h2 className="font-black uppercase leading-[0.84] tracking-[-0.05em] text-[clamp(52px,7.5vw,140px)] text-brand-black">
           {title}

@@ -17,8 +17,8 @@ export default function SubpageNav({ note }: SubpageNavProps) {
   const { pathname } = useLocation();
 
   return (
-    <header className="relative z-10" style={{ paddingBottom: note ? 200 : 0 }}>
-      <nav className="flex items-baseline justify-between font-black uppercase text-[clamp(10px,1.51vw,29px)] tracking-wide" style={{ padding: '16px 24px 12px' }}>
+    <header className={`relative z-10 ${note ? 'pb-16 md:pb-[200px]' : ''}`}>
+      <nav className="flex items-baseline justify-between font-black uppercase text-[clamp(10px,1.51vw,29px)] tracking-wide px-4 py-3 md:px-6 md:py-[12px] md:pt-4">
         <div className="flex flex-wrap items-baseline gap-x-[clamp(14px,3.6vw,68px)] gap-y-[clamp(6px,0.6vw,12px)] min-w-0">
           {navLinks.map((link) => {
             const active = link.to === pathname;
@@ -48,7 +48,7 @@ export default function SubpageNav({ note }: SubpageNavProps) {
       </nav>
 
       {note && (
-        <div style={{ padding: '60px 24px 0' }}>
+        <div className="pt-10 px-4 md:pt-[60px] md:px-6">
           <p className="max-w-[680px] text-[clamp(20px,2vw,36px)] leading-[1.14] text-brand-black">
             {note}
           </p>
