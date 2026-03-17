@@ -1,16 +1,18 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;900&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=DM+Mono:ital,wght@0,400;0,500&display=swap');
 
 @theme {
-  --color-brand-black: #121616;
-  --color-brand-gray: #494949;
-  --color-brand-bg: #B3B3B3;
-  --color-brand-orange: #F97B27;
-  --color-brand-red: #F6232A;
-  --color-brand-hover-1: #F87227;
-  --color-brand-hover-2: #F84C29;
-  --color-brand-hover-3: #F6242A;
-  --font-inter: 'Inter', sans-serif;
+  --color-brand-black: #E8E3D8;
+  --color-brand-gray: #4A4A4A;
+  --color-brand-bg: #0D0D0D;
+  --color-brand-orange: #FF4500;
+  --color-brand-red: #E8001C;
+  --color-brand-hover-1: #FF4500;
+  --color-brand-hover-2: #F04A1E;
+  --color-brand-hover-3: #E8001C;
+  --font-inter: 'Courier Prime', monospace;
+  --font-display: 'Big Shoulders Display', sans-serif;
+  --font-mono: 'DM Mono', monospace;
 }
 
 * {
@@ -24,11 +26,37 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Courier Prime', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #B3B3B3;
-  color: #121616;
+  background-color: #0D0D0D;
+  color: #E8E3D8;
+}
+
+/* Grain overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.042;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0D0D0D;
+}
+::-webkit-scrollbar-thumb {
+  background: #252525;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF4500;
 }
 
 @media (pointer: fine) {

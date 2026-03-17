@@ -114,7 +114,7 @@ export default function BackgroundShapes() {
           else ctx!.lineTo(p.x, p.y);
         });
         ctx!.closePath();
-        ctx!.fillStyle = 'rgba(18, 22, 22, 0.045)';
+        ctx!.fillStyle = 'rgba(232, 227, 216, 0.022)';
         ctx!.fill();
         ctx!.restore();
       }

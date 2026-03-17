@@ -29,7 +29,7 @@ const projects = [
 
 function ProjectImage({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="overflow-hidden rounded-[4px]">
+    <div className="overflow-hidden rounded-[2px]">
       <img src={src} alt={alt} className="h-auto w-full" />
     </div>
   );
@@ -37,7 +37,7 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
 
 export default function AIAutomationPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-brand-bg font-inter relative">
+    <div className="min-h-screen flex flex-col bg-brand-bg relative">
       <BackgroundShapes />
 
       <SubpageNav
@@ -52,6 +52,7 @@ export default function AIAutomationPage() {
             description={project.description}
             blocks={[]}
             invert={i % 2 === 1}
+            sectionIndex={i + 1}
             media={
               <ProjectImage
                 src={projectMedia[i]}
@@ -61,8 +62,14 @@ export default function AIAutomationPage() {
           />
         ))}
 
-        <div className="min-h-screen flex items-center" style={{ padding: '0 24px' }}>
-          <p className="max-w-[960px] text-[clamp(30px,3.6vw,68px)] font-black uppercase leading-[0.88] tracking-[-0.04em] text-brand-black">
+        <div
+          className="min-h-screen flex items-center border-t border-[#1C1C1C]"
+          style={{ padding: '0 28px' }}
+        >
+          <p
+            className="max-w-[960px] text-[clamp(28px,3.4vw,64px)] font-black uppercase leading-[0.88] tracking-[-0.04em] font-display"
+            style={{ color: '#E8E3D8' }}
+          >
             And a dozen other small tools that turned repetitive production work
             into reusable internal systems.
           </p>

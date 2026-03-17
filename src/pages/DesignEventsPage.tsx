@@ -21,12 +21,12 @@ const posterImages = [
   '/media/design-events/end2.webp',
 ] as const;
 
-const posterGap = 'clamp(12px,1vw,18px)';
+const posterGap = 'clamp(10px,0.9vw,16px)';
 
 function PosterImage({ src, alt }: { src: string; alt: string }) {
   return (
     <div
-      className="break-inside-avoid overflow-hidden rounded-[4px]"
+      className="break-inside-avoid overflow-hidden rounded-[2px]"
       style={{ marginBottom: posterGap }}
     >
       <img src={src} alt={alt} className="h-auto w-full object-cover" />
@@ -36,7 +36,7 @@ function PosterImage({ src, alt }: { src: string; alt: string }) {
 
 export default function DesignEventsPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-brand-bg font-inter relative">
+    <div className="min-h-screen flex flex-col bg-brand-bg relative">
       <BackgroundShapes />
 
       <SubpageNav note="Personal work, event instincts, and visual experiments that sit somewhere between design practice and making things happen in the real world." />
@@ -47,6 +47,7 @@ export default function DesignEventsPage() {
           titleAccent="& Ends"
           description="I like making and generating things for myself from time to time. Before AI automation, I spent a lot of time around event production and graffiti culture, so I can switch from visuals to hands-on coordination: talk to venue contractors about lighting and sound, then repaint a wall if needed."
           blocks={[]}
+          sectionIndex={1}
           media={
             <div className="columns-2 md:columns-3" style={{ columnGap: posterGap }}>
               {posterImages.map((src, i) => (
@@ -60,8 +61,14 @@ export default function DesignEventsPage() {
           }
         />
 
-        <div className="min-h-screen flex items-center" style={{ padding: '0 24px' }}>
-          <p className="max-w-[960px] text-[clamp(30px,3.6vw,68px)] font-black uppercase leading-[0.88] tracking-[-0.04em] text-brand-black">
+        <div
+          className="min-h-screen flex items-center border-t border-[#1C1C1C]"
+          style={{ padding: '0 28px' }}
+        >
+          <p
+            className="max-w-[960px] text-[clamp(28px,3.4vw,64px)] font-black uppercase leading-[0.88] tracking-[-0.04em] font-display"
+            style={{ color: '#E8E3D8' }}
+          >
             A side of the portfolio where design instincts, production sense,
             and rough visual energy meet in one place.
           </p>

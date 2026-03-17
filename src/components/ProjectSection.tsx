@@ -12,6 +12,7 @@ interface ProjectSectionProps {
   note?: string;
   hideTitle?: boolean;
   invert?: boolean;
+  sectionIndex?: number;
 }
 
 export default function ProjectSection({
@@ -23,19 +24,39 @@ export default function ProjectSection({
   note,
   hideTitle = false,
   invert = false,
+  sectionIndex,
 }: ProjectSectionProps) {
   return (
-    <section className="relative z-10" style={{ padding: '0 24px 200px' }}>
+    <section
+      className="relative z-10 border-t border-[#1C1C1C] px-7"
+      style={{ paddingBottom: 'clamp(80px, 12vw, 180px)' }}
+    >
       {!hideTitle && (
-        <h2 className="font-black uppercase leading-[0.84] tracking-[-0.05em] text-[clamp(52px,7.5vw,140px)] text-brand-black">
-          {title}
-          {titleAccent && (
-            <>
-              <br />
-              <span>{titleAccent}</span>
-            </>
+        <div
+          className="flex items-start justify-between"
+          style={{ paddingTop: 'clamp(32px,4vh,72px)' }}
+        >
+          <h2
+            className="font-black uppercase leading-[0.84] tracking-[-0.04em] text-[clamp(50px,7vw,136px)] font-display"
+            style={{ color: '#E8E3D8' }}
+          >
+            {title}
+            {titleAccent && (
+              <>
+                <br />
+                <span>{titleAccent}</span>
+              </>
+            )}
+          </h2>
+          {sectionIndex !== undefined && (
+            <span
+              className="text-[clamp(9px,0.75vw,12px)] font-mono shrink-0 ml-4 mt-[0.5em]"
+              style={{ color: '#282828' }}
+            >
+              {String(sectionIndex).padStart(2, '0')}
+            </span>
           )}
-        </h2>
+        </div>
       )}
 
       <div
@@ -44,23 +65,32 @@ export default function ProjectSection({
             ? 'lg:grid-cols-[minmax(340px,1.1fr)_minmax(260px,0.72fr)]'
             : 'lg:grid-cols-[minmax(260px,0.72fr)_minmax(340px,1.1fr)]'
         }`}
-        style={{ marginTop: 80, rowGap: 80 }}
+        style={{ marginTop: 'clamp(36px, 5vw, 72px)', rowGap: 'clamp(36px, 5vw, 72px)' }}
       >
         <div className={`min-w-0 ${invert ? 'lg:order-2' : ''}`}>
           {description && (
-            <p className="max-w-[640px] text-[clamp(17px,1.45vw,26px)] leading-[1.18] text-brand-black">
+            <p
+              className="max-w-[640px] text-[clamp(16px,1.4vw,25px)] leading-[1.22] font-inter"
+              style={{ color: '#666666' }}
+            >
               {description}
             </p>
           )}
 
           {blocks.length > 0 && (
-            <div style={{ marginTop: description ? 60 : 0 }} className="space-y-[48px]">
+            <div style={{ marginTop: description ? 56 : 0 }} className="space-y-[44px]">
               {blocks.map((block) => (
                 <div key={block.label}>
-                  <h3 className="mb-[clamp(10px,1vw,18px)] text-[clamp(11px,0.9vw,16px)] font-black uppercase tracking-[0.14em] text-brand-gray">
+                  <h3
+                    className="mb-[clamp(10px,1vw,18px)] text-[clamp(10px,0.85vw,14px)] font-black uppercase tracking-[0.16em] font-mono"
+                    style={{ color: '#282828' }}
+                  >
                     {block.label}
                   </h3>
-                  <p className="max-w-[640px] text-[clamp(17px,1.45vw,26px)] leading-[1.18] text-brand-black">
+                  <p
+                    className="max-w-[640px] text-[clamp(16px,1.4vw,25px)] leading-[1.22] font-inter"
+                    style={{ color: '#666666' }}
+                  >
                     {block.text}
                   </p>
                 </div>
@@ -69,7 +99,10 @@ export default function ProjectSection({
           )}
 
           {note && (
-            <p style={{ marginTop: 48 }} className="max-w-[640px] text-[clamp(17px,1.45vw,26px)] font-black uppercase leading-[1.06] text-brand-black">
+            <p
+              style={{ marginTop: 48, color: '#E8E3D8' }}
+              className="max-w-[640px] text-[clamp(16px,1.4vw,25px)] font-black uppercase leading-[1.08] font-display"
+            >
               {note}
             </p>
           )}

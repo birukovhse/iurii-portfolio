@@ -5,7 +5,7 @@ interface SubpageNavProps {
 }
 
 const navLinks = [
-  { label: 'Main page', to: '/' },
+  { label: 'Main', to: '/' },
   { label: 'AI Automation', to: '/ai-automation' },
   { label: 'AD Creatives', to: '/ad-creatives' },
   { label: 'Freelance Designer', to: '/design-events' },
@@ -17,18 +17,26 @@ export default function SubpageNav({ note }: SubpageNavProps) {
   const { pathname } = useLocation();
 
   return (
-    <header className="relative z-10" style={{ paddingBottom: note ? 200 : 0 }}>
-      <nav className="flex items-baseline justify-between font-black uppercase text-[clamp(10px,1.51vw,29px)] tracking-wide" style={{ padding: '16px 24px 12px' }}>
-        <div className="flex flex-wrap items-baseline gap-x-[clamp(14px,3.6vw,68px)] gap-y-[clamp(6px,0.6vw,12px)] min-w-0">
+    <header className="relative z-10 border-b border-[#1C1C1C]" style={{ paddingBottom: note ? 'clamp(60px, 12vw, 180px)' : 0 }}>
+      <nav
+        className="flex items-baseline justify-between font-black uppercase text-[clamp(9px,1.35vw,22px)] tracking-[0.06em] font-display"
+        style={{ padding: '14px 28px 14px' }}
+      >
+        <div className="flex flex-wrap items-baseline gap-x-[clamp(14px,3.2vw,60px)] gap-y-[clamp(6px,0.6vw,10px)] min-w-0">
           {navLinks.map((link) => {
             const active = link.to === pathname;
             return (
               <Link
                 key={link.to}
                 to={link.to}
-                className={`shrink-0 transition-opacity hover:opacity-60 ${
-                  active ? 'text-brand-black' : 'text-brand-gray'
-                }`}
+                className="shrink-0 transition-colors duration-300"
+                style={{ color: active ? '#E8E3D8' : '#2E2E2E' }}
+                onMouseEnter={(e) => {
+                  if (!active) (e.currentTarget as HTMLAnchorElement).style.color = '#E8E3D8';
+                }}
+                onMouseLeave={(e) => {
+                  if (!active) (e.currentTarget as HTMLAnchorElement).style.color = '#2E2E2E';
+                }}
               >
                 {link.label}
               </Link>
@@ -40,16 +48,21 @@ export default function SubpageNav({ note }: SubpageNavProps) {
           href={LINKEDIN_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="shrink-0 text-brand-black transition-opacity hover:opacity-60"
-          style={{ marginLeft: 'clamp(12px, 2vw, 40px)' }}
+          className="shrink-0 transition-colors duration-300 font-display"
+          style={{ marginLeft: 'clamp(12px,2vw,40px)', color: '#2E2E2E' }}
+          onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#E8E3D8'; }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#2E2E2E'; }}
         >
           LinkedIn
         </a>
       </nav>
 
       {note && (
-        <div style={{ padding: '60px 24px 0' }}>
-          <p className="max-w-[680px] text-[clamp(20px,2vw,36px)] leading-[1.14] text-brand-black">
+        <div style={{ padding: 'clamp(28px, 4vw, 48px) 28px 0' }}>
+          <p
+            className="max-w-[700px] text-[clamp(15px,1.9vw,34px)] leading-[1.22] font-inter"
+            style={{ color: '#3A3A3A' }}
+          >
             {note}
           </p>
         </div>

@@ -2,25 +2,29 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import GenerativeAnimation, { type HoverMode } from '../components/GenerativeAnimation';
+import StaticHeroShapes from '../components/StaticHeroShapes';
 
 const roles = [
   {
     lines: ['AI Automation', 'Specialist'],
     to: '/ai-automation',
-    hoverColor: '#F87227',
+    hoverColor: '#FF4500',
     hoverMode: 'line' as HoverMode,
+    index: '01',
   },
   {
     lines: ['AD Creative', 'Designer'],
     to: '/ad-creatives',
-    hoverColor: '#F84C29',
+    hoverColor: '#F04A1E',
     hoverMode: 'pulse' as HoverMode,
+    index: '02',
   },
   {
     lines: ['Freelance Graphic', 'Designer'],
     to: '/design-events',
-    hoverColor: '#F6242A',
+    hoverColor: '#E8001C',
     hoverMode: 'gravity' as HoverMode,
+    index: '03',
   },
 ] as const;
 
@@ -28,39 +32,89 @@ export default function HomePage() {
   const [animMode, setAnimMode] = useState<HoverMode>(null);
 
   return (
-    <div className="h-screen flex flex-col bg-brand-bg font-inter relative overflow-hidden">
+    <div className="h-screen flex flex-col bg-brand-bg relative overflow-hidden">
       <main className="flex-1 relative">
-        <div className="absolute right-0 top-0 w-[42%] h-full">
+
+        {/* Mobile background shapes */}
+        <StaticHeroShapes />
+
+        {/* ── Layer 1: full-width divider lines (z-2, behind canvas) ── */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 z-[2] pointer-events-none flex flex-col justify-between"
+          style={{ paddingTop: '20px' }}
+        >
+          {/* Invisible h1 spacer — mirrors real h1 height so lines align */}
+          <h1
+            className="font-black text-[clamp(28px,6.2vw,120px)] uppercase leading-[0.88] tracking-[-0.02em] font-display opacity-0 select-none w-full grid grid-cols-1 md:grid-cols-[auto_auto_1fr] items-baseline gap-x-[clamp(8px,2vw,36px)]"
+            style={{ padding: '0 28px' }}
+          >
+            <span className="hidden md:block">Hello</span>
+            <span className="hidden md:block">my name is</span>
+            <span>Iurii Biriukov</span>
+          </h1>
+
+          {roles.map(({ to }) => (
+            <div
+              key={to + '-line'}
+              className="w-full border-t border-[#1C1C1C]"
+              style={{
+                paddingTop: 'clamp(10px,1.7vh,20px)',
+                paddingBottom: 'clamp(10px,1.7vh,20px)',
+              }}
+            />
+          ))}
+
+          <div />
+        </div>
+
+        {/* ── Layer 2: canvas animation (z-6, desktop only) ── */}
+        <div className="absolute right-0 top-0 w-[42%] h-full z-[6] hidden md:block">
           <GenerativeAnimation hoverMode={animMode} />
         </div>
 
+        {/* ── Layer 3: left text content (z-12, on top of canvas) ── */}
         <div
-          className="relative z-10 pointer-events-none h-full flex flex-col justify-between"
-          style={{ padding: '16px 24px 0 24px' }}
+          className="absolute inset-0 z-[12] pointer-events-none flex flex-col justify-between"
+          style={{ padding: '20px 28px 0 28px' }}
         >
-          <h1 className="font-black text-[clamp(32px,6.67vw,128px)] uppercase leading-[1] tracking-[-0.02em] text-brand-black grid grid-cols-[auto_auto_1fr] items-baseline gap-x-[clamp(10px,2.5vw,40px)] w-full">
-            <span>Hello</span>
-            <span>I&apos;m</span>
-            <span className="justify-self-end text-right">Iurii Biriukov</span>
+          <h1
+            className="font-black text-[clamp(28px,6.2vw,120px)] uppercase leading-[0.88] tracking-[-0.02em] text-brand-black w-full font-display grid grid-cols-1 md:grid-cols-[auto_auto_1fr] items-baseline gap-x-[clamp(8px,2vw,36px)]"
+          >
+            <span className="hidden md:block" style={{ color: '#2C2C2C' }}>Hello</span>
+            <span className="hidden md:block" style={{ color: '#2C2C2C' }}>my name is</span>
+            <span className="md:justify-self-end md:text-right">Iurii Biriukov</span>
           </h1>
 
-          {roles.map(({ lines, to, hoverColor, hoverMode }) => (
+          {roles.map(({ lines, to, hoverColor, hoverMode, index }) => (
             <Link
               key={to}
               to={to}
-              className="inline-flex w-fit flex-col font-black text-[clamp(20px,5vw,96px)] uppercase leading-[0.82] tracking-[-0.03em] text-brand-gray transition-colors duration-300 pointer-events-auto"
+              className="w-fit flex items-baseline gap-[clamp(10px,1.6vw,28px)] pointer-events-auto transition-colors duration-300 text-brand-gray"
+              style={{
+                paddingTop: 'clamp(10px,1.7vh,20px)',
+                paddingBottom: 'clamp(10px,1.7vh,20px)',
+              }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = hoverColor;
+                (e.currentTarget as HTMLAnchorElement).style.color = hoverColor;
                 setAnimMode(hoverMode);
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = '';
+                (e.currentTarget as HTMLAnchorElement).style.color = '';
                 setAnimMode(null);
               }}
             >
-              {lines.map((line) => (
-                <span key={line}>{line}</span>
-              ))}
+              <span
+                className="text-[clamp(9px,0.75vw,12px)] shrink-0 self-start mt-[0.35em] font-mono"
+                style={{ color: '#282828' }}
+              >
+                {index}
+              </span>
+              <span className="font-black text-[clamp(20px,4.5vw,88px)] uppercase leading-[0.82] tracking-[-0.02em] font-display">
+                {lines.map((line) => (
+                  <span key={line} className="block">{line}</span>
+                ))}
+              </span>
             </Link>
           ))}
 
