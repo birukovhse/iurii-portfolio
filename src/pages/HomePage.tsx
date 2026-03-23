@@ -38,45 +38,15 @@ export default function HomePage() {
         {/* Mobile background shapes */}
         <StaticHeroShapes />
 
-        {/* ── Layer 1: full-width divider lines (z-2, behind canvas) ── */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 z-[2] pointer-events-none flex flex-col justify-between"
-          style={{ paddingTop: '20px' }}
-        >
-          {/* Invisible h1 spacer — mirrors real h1 height so lines align */}
-          <h1
-            className="font-black text-[clamp(28px,6.2vw,120px)] uppercase leading-[0.88] tracking-[-0.02em] font-display opacity-0 select-none w-full grid grid-cols-1 md:grid-cols-[auto_auto_1fr] items-baseline gap-x-[clamp(8px,2vw,36px)]"
-            style={{ padding: '0 28px' }}
-          >
-            <span className="hidden md:block">Hello</span>
-            <span className="hidden md:block">my name is</span>
-            <span>Iurii Biriukov</span>
-          </h1>
-
-          {roles.map(({ to }) => (
-            <div
-              key={to + '-line'}
-              className="w-full border-t border-[#1C1C1C]"
-              style={{
-                paddingTop: 'clamp(10px,1.7vh,20px)',
-                paddingBottom: 'clamp(10px,1.7vh,20px)',
-              }}
-            />
-          ))}
-
-          <div />
-        </div>
-
-        {/* ── Layer 2: canvas animation (z-6, desktop only) ── */}
+        {/* Canvas animation (z-6, desktop only) */}
         <div className="absolute right-0 top-0 w-[42%] h-full z-[6] hidden md:block">
           <GenerativeAnimation hoverMode={animMode} />
         </div>
 
-        {/* ── Layer 3: left text content (z-12, on top of canvas) ── */}
+        {/* Content layer (z-12) */}
         <div
-          className="absolute inset-0 z-[12] pointer-events-none flex flex-col justify-between"
-          style={{ padding: '20px 28px 0 28px' }}
+          className="absolute inset-0 z-[12] pointer-events-none flex flex-col"
+          style={{ padding: '20px clamp(28px,4vw,80px) 0 clamp(28px,4vw,80px)' }}
         >
           <h1
             className="font-black text-[clamp(28px,6.2vw,120px)] uppercase leading-[0.88] tracking-[-0.02em] text-brand-black w-full font-display grid grid-cols-1 md:grid-cols-[auto_auto_1fr] items-baseline gap-x-[clamp(8px,2vw,36px)]"
@@ -86,39 +56,44 @@ export default function HomePage() {
             <span className="md:justify-self-end md:text-right">Iurii Biriukov</span>
           </h1>
 
-          {roles.map(({ lines, to, hoverColor, hoverMode, index }) => (
-            <Link
-              key={to}
-              to={to}
-              className="w-fit flex items-baseline gap-[clamp(10px,1.6vw,28px)] pointer-events-auto transition-colors duration-300 text-brand-gray"
-              style={{
-                paddingTop: 'clamp(10px,1.7vh,20px)',
-                paddingBottom: 'clamp(10px,1.7vh,20px)',
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.color = hoverColor;
-                setAnimMode(hoverMode);
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.color = '';
-                setAnimMode(null);
-              }}
-            >
-              <span
-                className="text-[clamp(9px,0.75vw,12px)] shrink-0 self-start mt-[0.35em] font-mono"
-                style={{ color: '#282828' }}
+          {/* Roles — each gets equal share of remaining height, border-top = divider line */}
+          <div className="flex-1 flex flex-col">
+            {roles.map(({ lines, to, hoverColor, hoverMode, index }) => (
+              <div
+                key={to}
+                className="flex-1 border-t border-[#1C1C1C]"
               >
-                {index}
-              </span>
-              <span className="font-black text-[clamp(20px,4.5vw,88px)] uppercase leading-[0.82] tracking-[-0.02em] font-display">
-                {lines.map((line) => (
-                  <span key={line} className="block">{line}</span>
-                ))}
-              </span>
-            </Link>
-          ))}
-
-          <div />
+                <Link
+                  to={to}
+                  className="w-fit flex items-baseline gap-[clamp(10px,1.6vw,28px)] pointer-events-auto transition-colors duration-300 text-brand-gray"
+                  style={{
+                    paddingTop: 'clamp(10px,1.7vh,20px)',
+                    paddingBottom: 'clamp(10px,1.7vh,20px)',
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.color = hoverColor;
+                    setAnimMode(hoverMode);
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.color = '';
+                    setAnimMode(null);
+                  }}
+                >
+                  <span
+                    className="text-[clamp(9px,0.75vw,12px)] shrink-0 self-start mt-[0.35em] font-mono"
+                    style={{ color: '#282828' }}
+                  >
+                    {index}
+                  </span>
+                  <span className="font-black text-[clamp(20px,4.5vw,88px)] uppercase leading-[0.82] tracking-[-0.02em] font-display">
+                    {lines.map((line) => (
+                      <span key={line} className="block">{line}</span>
+                    ))}
+                  </span>
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
       </main>
 
