@@ -63,7 +63,8 @@ export default function AIAutomationPage() {
         ))}
 
         <div
-          className="min-h-screen flex items-center border-t border-[#1C1C1C] px-page"
+          className="min-h-screen flex items-center border-t border-[#1C1C1C]"
+          style={{ padding: '0 28px' }}
         >
           <p
             className="max-w-[960px] text-[clamp(28px,3.4vw,64px)] font-black uppercase leading-[0.88] tracking-[-0.04em] font-display"

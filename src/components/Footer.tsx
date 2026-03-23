@@ -1,8 +1,8 @@
 export default function Footer() {
   return (
     <footer
-      className="w-full uppercase font-black text-[clamp(9px,1.35vw,22px)] tracking-[0.06em] overflow-hidden font-display px-page"
-      style={{ paddingTop: 'clamp(14px,1.2vw,20px)', paddingBottom: 'clamp(18px,1.4vw,24px)', color: '#2E2E2E' }}
+      className="w-full uppercase font-black text-[clamp(9px,1.35vw,22px)] tracking-[0.06em] overflow-hidden font-display"
+      style={{ padding: '14px 28px 18px', color: '#2E2E2E' }}
     >
       <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-y-[6px]">
         <div className="flex flex-wrap items-baseline gap-x-[clamp(12px,4vw,80px)] gap-y-[4px] min-w-0">
