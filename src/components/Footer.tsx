@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer
-      className="w-full uppercase font-black text-[clamp(9px,1.35vw,22px)] tracking-[0.06em] overflow-hidden border-t border-[#1C1C1C] font-display"
+      className="w-full uppercase font-black text-[clamp(9px,1.35vw,22px)] tracking-[0.06em] overflow-hidden font-display"
       style={{ padding: 'clamp(14px,1.2vw,20px) clamp(28px,4vw,80px) clamp(18px,1.4vw,24px)', color: '#2E2E2E' }}
     >
       <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-y-[6px]">

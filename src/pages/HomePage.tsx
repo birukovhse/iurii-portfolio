@@ -56,12 +56,11 @@ export default function HomePage() {
             <span className="md:justify-self-end md:text-right">Iurii Biriukov</span>
           </h1>
 
-          {/* Roles — each gets equal share of remaining height, border-top = divider line */}
           <div className="flex-1 flex flex-col">
             {roles.map(({ lines, to, hoverColor, hoverMode, index }) => (
               <div
                 key={to}
-                className="flex-1 border-t border-[#1C1C1C]"
+                className="flex-1"
               >
                 <Link
                   to={to}
