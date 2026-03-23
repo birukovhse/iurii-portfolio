@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;900&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=DM+Mono:ital,wght@0,400;0,500&display=swap');
 
+@utility px-page {
+  padding-inline: clamp(28px, 4vw, 80px);
+}
+
 @theme {
   --color-brand-black: #E8E3D8;
   --color-brand-gray: #4A4A4A;

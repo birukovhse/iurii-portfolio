@@ -45,8 +45,8 @@ export default function HomePage() {
 
         {/* Content layer (z-12) */}
         <div
-          className="absolute inset-0 z-[12] pointer-events-none flex flex-col"
-          style={{ padding: '20px clamp(28px,4vw,80px) 0 clamp(28px,4vw,80px)' }}
+          className="absolute inset-0 z-[12] pointer-events-none flex flex-col px-page"
+          style={{ paddingTop: '20px' }}
         >
           <h1
             className="font-black text-[clamp(28px,6.2vw,120px)] uppercase leading-[0.88] tracking-[-0.02em] text-brand-black w-full font-display grid grid-cols-1 md:grid-cols-[auto_auto_1fr] items-baseline gap-x-[clamp(8px,2vw,36px)]"
