@@ -28,8 +28,8 @@ export default function ProjectSection({
 }: ProjectSectionProps) {
   return (
     <section
-      className="relative z-10 border-t border-[#1C1C1C] px-7"
-      style={{ paddingBottom: 'clamp(80px, 12vw, 180px)' }}
+      className="relative z-10 border-t border-[#1C1C1C]"
+      style={{ paddingLeft: '28px', paddingRight: '28px', paddingBottom: 'clamp(80px, 12vw, 180px)' }}
     >
       {!hideTitle && (
         <div

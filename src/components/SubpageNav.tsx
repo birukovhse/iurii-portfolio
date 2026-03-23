@@ -58,7 +58,7 @@ export default function SubpageNav({ note }: SubpageNavProps) {
       </nav>
 
       {note && (
-        <div style={{ padding: 'clamp(28px, 4vw, 48px) 28px 0' }}>
+        <div style={{ paddingLeft: '28px', paddingRight: '28px', paddingTop: 'clamp(28px, 4vw, 48px)' }}>
           <p
             className="max-w-[700px] text-[clamp(15px,1.9vw,34px)] leading-[1.22] font-inter"
             style={{ color: '#3A3A3A' }}
